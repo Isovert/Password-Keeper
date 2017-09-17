@@ -58,19 +58,57 @@ namespace PasswordKeeper.ViewModels
             set { _unsavedChanges = value; }
         }
 
-        public MainWindowViewModel(Window window, Database database)
+        public MainWindowViewModel(Window window)
         {
             parentWindow = window;
-            _database = database;
+            if (Database.Exists)            
+                LoginToDatabase();            
+            else            
+                CreateNewDatabase();
+            InitializeRelayCommands();
+            _firstGeneration = new ObservableCollection<FolderTreeViewModel>();
+            if (_database.RootFolderModels.Count != 0)
+                foreach (FolderModel folderModel in _database.RootFolderModels)
+                    _firstGeneration.Add(new FolderTreeViewModel(folderModel, this));
+        }
+
+        private void LoginToDatabase()
+        {
+            _database = DatabaseSerializer.LoadData();
+            GetPasswordWindow getPasswordWindow = new GetPasswordWindow();
+            getPasswordWindow.ShowDialog();
+            if (!getPasswordWindow.Valid)
+            {
+                throw new UnauthorizedAccessException();
+            }
+            try
+            {
+                _database.CheckPassword(getPasswordWindow.Password);
+            }
+            catch (UnauthorizedAccessException)
+            {
+                throw;
+            }
+        }
+
+        private void CreateNewDatabase()
+        {
+            InitialPassAndKeywordWindow initWindow = new InitialPassAndKeywordWindow();
+            initWindow.ShowDialog();
+            if (!initWindow.initialPasswordViewModel.Valid)
+            {
+                return;
+            }
+            _database = new Database(initWindow.initialPasswordViewModel.Keyword, initWindow.initialPasswordViewModel.Password);
+        }
+
+        private void InitializeRelayCommands()
+        {
             AddFolder = new RelayCommand(x => AddFolderMethod());
             DeleteFolder = new RelayCommand(x => DeleteActiveFolderMethod(), x => ActiveFolderViewModel == null ? false : true);
             AddLogin = new RelayCommand(x => AddLoginMethod(), x => ActiveFolderViewModel == null ? false : true);
             DeleteLogin = new RelayCommand(x => DeleteActiveLoginMethod(), x => ActiveTreeLoginViewModel == null ? false : true);
             SaveData = new RelayCommand(x => SaveDataMethod());
-            _firstGeneration = new ObservableCollection<FolderTreeViewModel>();
-            if (_database.RootFolderModels.Count != 0)
-                foreach (FolderModel folderModel in _database.RootFolderModels)
-                    _firstGeneration.Add(new FolderTreeViewModel(folderModel, this));
         }
 
         #region RelayCommands

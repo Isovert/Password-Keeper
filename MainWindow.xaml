@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModels="clr-namespace:PasswordKeeper.ViewModels"
+        xmlns:p="clr-namespace:PasswordKeeper.Properties"
         xmlns:local="clr-namespace:PasswordKeeper"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="800"
@@ -13,20 +14,19 @@
 
     <DockPanel>
         <Menu DockPanel.Dock="Top" Background="LightGray">
-            <MenuItem Header="_File">
-                <MenuItem x:Name="MenuItemSave" Command="{Binding SaveData}" Header="_Save"></MenuItem>
-                <MenuItem x:Name="MenuItemClose" Header="_Exit" Click="MenuItemClose_Click"></MenuItem>
+            <MenuItem Header="{x:Static p:Resources.MENU_ITEM_FILE}">
+                <MenuItem x:Name="MenuItemSave" Command="{Binding SaveData}" Header="{x:Static p:Resources.MENU_ITEM_SAVE}"></MenuItem>
+                <MenuItem x:Name="MenuItemClose" Header="{x:Static p:Resources.MENU_ITEM_EXIT}" Click="MenuItemClose_Click"></MenuItem>
             </MenuItem>
-            <MenuItem Header="_Edit">
-                <MenuItem Header="Undo"></MenuItem>
+            <MenuItem Header="{x:Static p:Resources.MENU_ITEM_EDIT}">
+                <MenuItem Header="{x:Static p:Resources.MENU_ITEM_UNDO}"></MenuItem>
             </MenuItem>
-            <MenuItem Header="_About">
-                <MenuItem Header="_Language"></MenuItem>
-                <MenuItem Header="_Info"></MenuItem>
+            <MenuItem Header="{x:Static p:Resources.MENU_ITEM_ABOUT}">
+                <MenuItem Header="{x:Static p:Resources.MENU_ITEM_LANGUAGE}" x:Name="MenuItemLanguage" Click="MenuItemLanguage_Click"></MenuItem>
+                <MenuItem Header="{x:Static p:Resources.MENU_ITEM_INFO}"></MenuItem>
             </MenuItem>
         </Menu>
         <Grid DockPanel.Dock="Top" Height="50" VerticalAlignment="Top">
-
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -34,12 +34,11 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
-            <Button Grid.Column="0" Content="Add folder" Command="{Binding AddFolder}" Margin="5"/>
-            <Button Grid.Column="1" Content="Add login" Command="{Binding AddLogin}" Margin="5"/>
-            <Button Grid.Column="2" Content="Save Data" Command="{Binding SaveData}" Margin="5"/>
-            <Button Grid.Column="3" Content="Delete folder" Command="{Binding DeleteFolder}" Margin="5"/>
-            <Button Grid.Column="4" Content="Delete login" Command="{Binding DeleteLogin}" Margin="5"/>
+            <Button Grid.Column="0" Content="{x:Static p:Resources.BUTTON_ADD_FOLDER}" Command="{Binding AddFolder}" Margin="5"/>
+            <Button Grid.Column="1" Content="{x:Static p:Resources.BUTTON_ADD_LOGIN}" Command="{Binding AddLogin}" Margin="5"/>
+            <Button Grid.Column="2" Content="{x:Static p:Resources.BUTTON_SAVE_DATA}" Command="{Binding SaveData}" Margin="5"/>
+            <Button Grid.Column="3" Content="{x:Static p:Resources.BUTTON_DELETE_FOLDER}" Command="{Binding DeleteFolder}" Margin="5"/>
+            <Button Grid.Column="4" Content="{x:Static p:Resources.BUTTON_DELETE_LOGIN}" Command="{Binding DeleteLogin}" Margin="5"/>
         </Grid>
         <TreeView DockPanel.Dock="Left" ItemsSource="{Binding FirstGeneration}" Name="treeView" HorizontalAlignment="Left" Height="400" Margin="20,0,0,0" VerticalAlignment="Top" Width="200">
             <TreeView.ItemContainerStyle>
@@ -55,10 +54,16 @@
             </TreeView.ItemContainerStyle>
             <TreeView.Resources>
                 <HierarchicalDataTemplate DataType="{x:Type viewModels:FolderTreeViewModel}" ItemsSource="{Binding FolderViewModelsCollection}">
-                    <TextBlock Text="{Binding Name}" Background="LightBlue"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="16" Height="16" Source="{StaticResource folderIcon}"></Image>
+                        <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="5 0 0 0"/>
+                    </StackPanel>
                 </HierarchicalDataTemplate>
                 <HierarchicalDataTemplate DataType="{x:Type viewModels:LoginTreeViewModel}">
-                    <TextBlock Text="{Binding Name}" Background="Red"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="16" Height="16" Source="{StaticResource keyIcon}"></Image>
+                        <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Margin="5 0 0 0"/>
+                    </StackPanel>
                 </HierarchicalDataTemplate>
             </TreeView.Resources>
         </TreeView>
@@ -78,23 +83,23 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="30" />
             </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" Grid.Row="0" Content="Name:"></Label>
+            <Label Grid.Column="0" Grid.Row="0" Content="{x:Static p:Resources.LABEL_NAME}"></Label>
             <TextBox Grid.Column="1" Grid.Row="0" Margin="5" Text="{Binding Path=ActiveTreeLoginViewModel.Name , UpdateSourceTrigger=PropertyChanged}"></TextBox>
-            <Label Grid.Column="0" Grid.Row="1" Content="Login:" VerticalAlignment="Center"></Label>
+            <Label Grid.Column="0" Grid.Row="1" Content="{x:Static p:Resources.LABEL_LOGIN}" VerticalAlignment="Center"></Label>
             <TextBox Grid.Column="1" Grid.Row="1" Margin="5" Text="{Binding Path=ActiveTreeLoginViewModel.Login , UpdateSourceTrigger=PropertyChanged}"></TextBox>
-            <Label Grid.Column="0" Grid.Row="2" Content="Password:" VerticalAlignment="Center"></Label>
-            <Button Grid.Column="1" Grid.Row="2" Margin="5" Command="{Binding Path=ActiveTreeLoginViewModel.CopyPasswordToClipboard}">Copy to clipboard</Button>
+            <Label Grid.Column="0" Grid.Row="2" Content="{x:Static p:Resources.LABEL_PASSWORD}" VerticalAlignment="Center"></Label>
+            <Button Grid.Column="1" Grid.Row="2" Margin="5" Content="{x:Static p:Resources.BUTTON_COPY_TO_CLIPBOARD}" Command="{Binding Path=ActiveTreeLoginViewModel.CopyPasswordToClipboard}"></Button>
             <Button Grid.Column="2" Grid.Row="2" Command="{Binding Path=ActiveTreeLoginViewModel.SetNewPassword}">EDIT</Button>
-            <Label Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" Content="URL:" ></Label>
+            <Label Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" Content="{x:Static p:Resources.LABEL_URL}" ></Label>
             <TextBox Grid.Column="1" Grid.Row="3" Margin="5" Text="{Binding Path=ActiveTreeLoginViewModel.URL , UpdateSourceTrigger=PropertyChanged}" ></TextBox>
             <Button Grid.Column="2" Grid.Row="3" Command="{Binding Path=ActiveTreeLoginViewModel.OpenURL}">URL</Button>
-            <Label Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" Content="Notes:" ></Label>
+            <Label Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" Content="{x:Static p:Resources.LABEL_NOTES}" ></Label>
             <TextBox Grid.Column="1" Grid.Row="4" Margin="5" Text="{Binding Path=ActiveTreeLoginViewModel.Notes, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-            <Label Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" Content="Creation date:" ></Label>
+            <Label Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" Content="{x:Static p:Resources.LABEL_CREATION_DATE}" ></Label>
             <TextBox Grid.Column="1" Grid.Row="5" Margin="5" IsEnabled="False" Text="{Binding Path=ActiveTreeLoginViewModel.CreationDate, Mode=OneWay}"></TextBox>
-            <Label Grid.Column="0" Grid.Row="6" VerticalAlignment="Center" Content="Modification date:" ></Label>
+            <Label Grid.Column="0" Grid.Row="6" VerticalAlignment="Center" Content="{x:Static p:Resources.LABEL_MODIFICATION_DATE}" ></Label>
             <TextBox Grid.Column="1" Grid.Row="6" Margin="5" IsEnabled="False" Text="{Binding Path=ActiveTreeLoginViewModel.ModificationDateTime , Mode=OneWay}"></TextBox>
-            <Button Grid.Column="1" Grid.Row="7" Height="22" Width="73" HorizontalAlignment="Right" Margin="5" Command="{Binding Path=ActiveTreeLoginViewModel.SaveDataToModel}" ></Button>
+            <Button Grid.Column="1"  Grid.Row="7" Content="{x:Static p:Resources.BUTTON_SAVE}" Height="22" Width="73" HorizontalAlignment="Right" Margin="5" Command="{Binding Path=ActiveTreeLoginViewModel.SaveDataToModel}" ></Button>
         </Grid>
     </DockPanel>
 </Window>

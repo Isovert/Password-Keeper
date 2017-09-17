@@ -118,117 +118,117 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BUTTON_ADD_FOLDER" xml:space="preserve">
-    <value>Add folder</value>
+    <value>Dodaj folder</value>
   </data>
   <data name="BUTTON_ADD_LOGIN" xml:space="preserve">
-    <value>Add login</value>
+    <value>Dodaj login</value>
   </data>
   <data name="BUTTON_CANCEL" xml:space="preserve">
     <value>Cancel</value>
   </data>
   <data name="BUTTON_CLOSE" xml:space="preserve">
-    <value>Close</value>
+    <value>Zamknij</value>
   </data>
   <data name="BUTTON_COPY_TO_CLIPBOARD" xml:space="preserve">
-    <value>Copy to clipboard</value>
+    <value>Kopiuj do schowka</value>
   </data>
   <data name="BUTTON_DELETE_FOLDER" xml:space="preserve">
-    <value>Delete folder</value>
+    <value>Usuń folder</value>
   </data>
   <data name="BUTTON_DELETE_LOGIN" xml:space="preserve">
-    <value>Delete login</value>
+    <value>Usuń login</value>
   </data>
   <data name="BUTTON_OK" xml:space="preserve">
     <value>OK</value>
   </data>
   <data name="BUTTON_SAVE" xml:space="preserve">
-    <value>Save</value>
+    <value>Zapisz</value>
   </data>
   <data name="BUTTON_SAVE_DATA" xml:space="preserve">
-    <value>Save Data</value>
+    <value>Zapisz dane</value>
   </data>
   <data name="BUTTON_SELECT" xml:space="preserve">
-    <value>Select</value>
+    <value>Wybierz</value>
   </data>
   <data name="LABEL_8_TO_15_DIGITS" xml:space="preserve">
-    <value>8 to 15 characters length</value>
+    <value>Osiem do piętnastu znaków</value>
   </data>
   <data name="LABEL_CREATION_DATE" xml:space="preserve">
-    <value>Creation date:</value>
+    <value>Data utworzenia:</value>
   </data>
   <data name="LABEL_ENTER_KEYWORD" xml:space="preserve">
-    <value>Enter the keyword:</value>
+    <value>Wpisz słowo-klucz:</value>
   </data>
   <data name="LABEL_ENTER_PASSWORD" xml:space="preserve">
-    <value>Enter the password:</value>
+    <value>Wpisz hasło:</value>
   </data>
   <data name="LABEL_FOLDER_NAME" xml:space="preserve">
-    <value>Folder name:</value>
+    <value>Nazwa folderu</value>
   </data>
   <data name="LABEL_LANGUAGE_PICK" xml:space="preserve">
-    <value>Pick the language:</value>
+    <value>Wybierz język:</value>
   </data>
   <data name="LABEL_LOGIN" xml:space="preserve">
     <value>Login:</value>
   </data>
   <data name="LABEL_MODIFICATION_DATE" xml:space="preserve">
-    <value>Modification date:</value>
+    <value>Data modyfikacji:</value>
   </data>
   <data name="LABEL_NAME" xml:space="preserve">
-    <value>Name:</value>
+    <value>Nazwa:</value>
   </data>
   <data name="LABEL_NOTES" xml:space="preserve">
-    <value>Notes:</value>
+    <value>Notatki:</value>
   </data>
   <data name="LABEL_ONE_LOWERCASE" xml:space="preserve">
-    <value>One lowercase letter</value>
+    <value>Jedną małą literę</value>
   </data>
   <data name="LABEL_ONE_SPECIAL_CHAR" xml:space="preserve">
-    <value>One special character</value>
+    <value>Jeden znak specjalny</value>
   </data>
   <data name="LABEL_ONE_UPPERCASE" xml:space="preserve">
-    <value>One uppercase letter</value>
+    <value>Jedną wielką literę</value>
   </data>
   <data name="LABEL_PASSWORD" xml:space="preserve">
-    <value>Password:</value>
+    <value>Hasło:</value>
   </data>
   <data name="LABEL_PASSWORD_MUST" xml:space="preserve">
-    <value>Password requirements:</value>
+    <value>Hasło musi mieć:</value>
   </data>
   <data name="LABEL_RETYPE_PASSWORD" xml:space="preserve">
-    <value>Retype the password:</value>
+    <value>Przepisz hasło:</value>
   </data>
   <data name="LABEL_URL" xml:space="preserve">
     <value>URL:</value>
   </data>
   <data name="MENU_ITEM_ABOUT" xml:space="preserve">
-    <value>About</value>
+    <value>O programie</value>
   </data>
   <data name="MENU_ITEM_EDIT" xml:space="preserve">
-    <value>Edit</value>
+    <value>Edycja</value>
   </data>
   <data name="MENU_ITEM_EXIT" xml:space="preserve">
-    <value>Exit</value>
+    <value>Zamknij</value>
   </data>
   <data name="MENU_ITEM_FILE" xml:space="preserve">
-    <value>File</value>
+    <value>Plik</value>
   </data>
   <data name="MENU_ITEM_INFO" xml:space="preserve">
     <value>Info</value>
   </data>
   <data name="MENU_ITEM_LANGUAGE" xml:space="preserve">
-    <value>Language</value>
+    <value>Język</value>
   </data>
   <data name="MENU_ITEM_SAVE" xml:space="preserve">
-    <value>Save</value>
+    <value>Zapisz</value>
   </data>
   <data name="MENU_ITEM_UNDO" xml:space="preserve">
-    <value>Undo</value>
+    <value>Cofnij</value>
   </data>
   <data name="MESSAGE_LANGUAGE_CHANGE_AFTER_RESTART" xml:space="preserve">
-    <value>Language will be changed after application restart. Selected language: </value>
+    <value>Język zostanie zmieniony po restarcie aplikacji. Wybrano język: </value>
   </data>
   <data name="TITLE_CREATE_NEW_LOGIN" xml:space="preserve">
-    <value>Create new login</value>
+    <value>Utwórz nowy login:</value>
   </data>
 </root>

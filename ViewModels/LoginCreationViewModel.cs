@@ -58,7 +58,7 @@ namespace PasswordKeeper.ViewModels
             set { _loginModel.Notes = value; OnPropertyChanged("Notes"); }
         }
 
-        public string _temporalPasswordContainer;
+        public string _temporalPasswordContainer = "";
         public string TemporalPasswordContainer
         {
             set { _temporalPasswordContainer = value; }

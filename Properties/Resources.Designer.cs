@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PasswordKeeper.Properties
-{
-
-
+namespace PasswordKeeper.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -22,49 +22,383 @@ namespace PasswordKeeper.Properties
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources
-    {
-
+    public class Resources {
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources()
-        {
+        internal Resources() {
         }
-
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager
-        {
-            get
-            {
-                if ((resourceMan == null))
-                {
+        public static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PasswordKeeper.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture
-        {
-            get
-            {
+        public static global::System.Globalization.CultureInfo Culture {
+            get {
                 return resourceCulture;
             }
-            set
-            {
+            set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add folder.
+        /// </summary>
+        public static string BUTTON_ADD_FOLDER {
+            get {
+                return ResourceManager.GetString("BUTTON_ADD_FOLDER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add login.
+        /// </summary>
+        public static string BUTTON_ADD_LOGIN {
+            get {
+                return ResourceManager.GetString("BUTTON_ADD_LOGIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string BUTTON_CANCEL {
+            get {
+                return ResourceManager.GetString("BUTTON_CANCEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string BUTTON_CLOSE {
+            get {
+                return ResourceManager.GetString("BUTTON_CLOSE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy to clipboard.
+        /// </summary>
+        public static string BUTTON_COPY_TO_CLIPBOARD {
+            get {
+                return ResourceManager.GetString("BUTTON_COPY_TO_CLIPBOARD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete folder.
+        /// </summary>
+        public static string BUTTON_DELETE_FOLDER {
+            get {
+                return ResourceManager.GetString("BUTTON_DELETE_FOLDER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete login.
+        /// </summary>
+        public static string BUTTON_DELETE_LOGIN {
+            get {
+                return ResourceManager.GetString("BUTTON_DELETE_LOGIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        public static string BUTTON_OK {
+            get {
+                return ResourceManager.GetString("BUTTON_OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string BUTTON_SAVE {
+            get {
+                return ResourceManager.GetString("BUTTON_SAVE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save Data.
+        /// </summary>
+        public static string BUTTON_SAVE_DATA {
+            get {
+                return ResourceManager.GetString("BUTTON_SAVE_DATA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select.
+        /// </summary>
+        public static string BUTTON_SELECT {
+            get {
+                return ResourceManager.GetString("BUTTON_SELECT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 8 to 15 characters length.
+        /// </summary>
+        public static string LABEL_8_TO_15_DIGITS {
+            get {
+                return ResourceManager.GetString("LABEL_8_TO_15_DIGITS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creation date:.
+        /// </summary>
+        public static string LABEL_CREATION_DATE {
+            get {
+                return ResourceManager.GetString("LABEL_CREATION_DATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the keyword:.
+        /// </summary>
+        public static string LABEL_ENTER_KEYWORD {
+            get {
+                return ResourceManager.GetString("LABEL_ENTER_KEYWORD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the password:.
+        /// </summary>
+        public static string LABEL_ENTER_PASSWORD {
+            get {
+                return ResourceManager.GetString("LABEL_ENTER_PASSWORD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Folder name:.
+        /// </summary>
+        public static string LABEL_FOLDER_NAME {
+            get {
+                return ResourceManager.GetString("LABEL_FOLDER_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pick the language:.
+        /// </summary>
+        public static string LABEL_LANGUAGE_PICK {
+            get {
+                return ResourceManager.GetString("LABEL_LANGUAGE_PICK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login:.
+        /// </summary>
+        public static string LABEL_LOGIN {
+            get {
+                return ResourceManager.GetString("LABEL_LOGIN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modification date:.
+        /// </summary>
+        public static string LABEL_MODIFICATION_DATE {
+            get {
+                return ResourceManager.GetString("LABEL_MODIFICATION_DATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name:.
+        /// </summary>
+        public static string LABEL_NAME {
+            get {
+                return ResourceManager.GetString("LABEL_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notes:.
+        /// </summary>
+        public static string LABEL_NOTES {
+            get {
+                return ResourceManager.GetString("LABEL_NOTES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to One lowercase letter.
+        /// </summary>
+        public static string LABEL_ONE_LOWERCASE {
+            get {
+                return ResourceManager.GetString("LABEL_ONE_LOWERCASE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to One special character.
+        /// </summary>
+        public static string LABEL_ONE_SPECIAL_CHAR {
+            get {
+                return ResourceManager.GetString("LABEL_ONE_SPECIAL_CHAR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to One uppercase letter.
+        /// </summary>
+        public static string LABEL_ONE_UPPERCASE {
+            get {
+                return ResourceManager.GetString("LABEL_ONE_UPPERCASE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password:.
+        /// </summary>
+        public static string LABEL_PASSWORD {
+            get {
+                return ResourceManager.GetString("LABEL_PASSWORD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password requirements:.
+        /// </summary>
+        public static string LABEL_PASSWORD_MUST {
+            get {
+                return ResourceManager.GetString("LABEL_PASSWORD_MUST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Retype the password:.
+        /// </summary>
+        public static string LABEL_RETYPE_PASSWORD {
+            get {
+                return ResourceManager.GetString("LABEL_RETYPE_PASSWORD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to URL:.
+        /// </summary>
+        public static string LABEL_URL {
+            get {
+                return ResourceManager.GetString("LABEL_URL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        public static string MENU_ITEM_ABOUT {
+            get {
+                return ResourceManager.GetString("MENU_ITEM_ABOUT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        public static string MENU_ITEM_EDIT {
+            get {
+                return ResourceManager.GetString("MENU_ITEM_EDIT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exit.
+        /// </summary>
+        public static string MENU_ITEM_EXIT {
+            get {
+                return ResourceManager.GetString("MENU_ITEM_EXIT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File.
+        /// </summary>
+        public static string MENU_ITEM_FILE {
+            get {
+                return ResourceManager.GetString("MENU_ITEM_FILE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Info.
+        /// </summary>
+        public static string MENU_ITEM_INFO {
+            get {
+                return ResourceManager.GetString("MENU_ITEM_INFO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        public static string MENU_ITEM_LANGUAGE {
+            get {
+                return ResourceManager.GetString("MENU_ITEM_LANGUAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string MENU_ITEM_SAVE {
+            get {
+                return ResourceManager.GetString("MENU_ITEM_SAVE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Undo.
+        /// </summary>
+        public static string MENU_ITEM_UNDO {
+            get {
+                return ResourceManager.GetString("MENU_ITEM_UNDO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language will be changed after application restart. Selected language: .
+        /// </summary>
+        public static string MESSAGE_LANGUAGE_CHANGE_AFTER_RESTART {
+            get {
+                return ResourceManager.GetString("MESSAGE_LANGUAGE_CHANGE_AFTER_RESTART", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create new login.
+        /// </summary>
+        public static string TITLE_CREATE_NEW_LOGIN {
+            get {
+                return ResourceManager.GetString("TITLE_CREATE_NEW_LOGIN", resourceCulture);
             }
         }
     }

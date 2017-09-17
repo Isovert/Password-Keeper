@@ -3,8 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:p="clr-namespace:PasswordKeeper.Properties"
         mc:Ignorable="d"
-        Title="Create new login" Height="260" Width="500"
+        Title="{x:Static p:Resources.TITLE_CREATE_NEW_LOGIN}" Height="260" Width="500"
         WindowStartupLocation="CenterOwner"
         Background="LightGray">
     <Grid Margin="10">
@@ -20,19 +21,19 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Label Grid.Column="0" Grid.Row="0" Content="Name:" VerticalAlignment="Center"></Label>
+        <Label Grid.Column="0" Grid.Row="0" Content="{x:Static p:Resources.LABEL_NAME}" VerticalAlignment="Center"></Label>
         <TextBox Grid.Column="1" Grid.Row="0" Margin="5" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-        <Label Grid.Column="0" Grid.Row="1" Content="Login:" VerticalAlignment="Center"></Label>
+        <Label Grid.Column="0" Grid.Row="1" Content="{x:Static p:Resources.LABEL_LOGIN}" VerticalAlignment="Center"></Label>
         <TextBox Grid.Column="1" Grid.Row="1" Margin="5" Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-        <Label Grid.Column="0" Grid.Row="2" Content="Password:" VerticalAlignment="Center"></Label>
+        <Label Grid.Column="0" Grid.Row="2" Content="{x:Static p:Resources.LABEL_PASSWORD}" VerticalAlignment="Center"></Label>
         <PasswordBox Grid.Column="1" Grid.Row="2" PasswordChanged="passwordBox_Password_PasswordChanged" x:Name="passwordBox_Password" Margin="5"/>
-        <Label Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" Content="URL:" ></Label>
+        <Label Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" Content="{x:Static p:Resources.LABEL_URL}" ></Label>
         <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding URL}" Margin="5"></TextBox>
-        <Label Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" Content="Notes:" ></Label>
+        <Label Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" Content="{x:Static p:Resources.LABEL_NOTES}" ></Label>
         <TextBox Grid.Column="1" Grid.Row="4" Text="{Binding Notes}" Margin="5"></TextBox>
         <StackPanel Grid.Column="1" Grid.Row="5" HorizontalAlignment="Right" Orientation="Horizontal">
-            <Button x:Name="button_OK" Command="{Binding Save}" Margin="5" MinWidth="73" Height="20" Click="button_OK_Click"></Button>
-            <Button x:Name="button_CANCEL" Margin="5" MinWidth="73" Height="20" Click="button_CANCEL_Click"/>
+            <Button x:Name="button_OK" Content="{x:Static p:Resources.BUTTON_OK}" Command="{Binding Save}" Margin="5" MinWidth="73" Height="20" Click="button_OK_Click"></Button>
+            <Button x:Name="button_CANCEL" Content="{x:Static p:Resources.BUTTON_CANCEL}" Margin="5" MinWidth="73" Height="20" Click="button_CANCEL_Click"/>
         </StackPanel>
     </Grid>
 </Window>

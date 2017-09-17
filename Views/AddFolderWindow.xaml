@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PasswordKeeper.Views"
         mc:Ignorable="d"
+        xmlns:p="clr-namespace:PasswordKeeper.Properties"
         Title="Create new folder" Height="120" Width="400"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner"
@@ -12,12 +13,12 @@
     <Grid>
         <StackPanel Margin="10" VerticalAlignment="Center" >
             <DockPanel LastChildFill="True">
-                <TextBlock Text="Folder name:" Margin="10"></TextBlock>
+                <TextBlock Text="{x:Static p:Resources.LABEL_FOLDER_NAME}" Margin="10"></TextBlock>
                 <TextBox x:Name="textBox_FolderName" Margin="10" />
             </DockPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,10,0" Height="20" HorizontalAlignment="Right">
-                <Button x:Name="button_OK" MinWidth="73" Click="button_OK_Click" ></Button>
-                <Button x:Name="button_CANCEL" MinWidth="73" Margin="10,0,0,0" Click="button_CANCEL_Click"></Button>
+                <Button x:Name="button_OK" Content="{x:Static p:Resources.BUTTON_OK}" MinWidth="73" Click="button_OK_Click" ></Button>
+                <Button x:Name="button_CANCEL" MinWidth="73" Content="{x:Static p:Resources.BUTTON_CANCEL}" Margin="10,0,0,0" Click="button_CANCEL_Click"></Button>
             </StackPanel>
         </StackPanel>
     </Grid>
