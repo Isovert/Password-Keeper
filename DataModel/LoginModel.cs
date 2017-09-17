@@ -21,28 +21,28 @@ namespace PasswordKeeper.DataModel
         }
 
         #region Properties
-        private string _name;
+        private string _name = "";
         public string Name
         {
             get { return _name; }
             set { _name = value; }
         }
 
-        private string _login;
+        private string _login = "";
         public string Login
         {
             get { return _login; }
             set { _login = value; }            
         }
 
-        private string _notes;
+        private string _notes = "";
         public string Notes
         {
             get { return _notes; }
             set { _notes = value; }
         }
 
-        private string _url;
+        private string _url = "";
         public string URL
         {
             get { return _url; }

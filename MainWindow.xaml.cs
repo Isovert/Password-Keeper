@@ -16,6 +16,7 @@ using PasswordKeeper.ViewModels;
 using PasswordKeeper.DataModel;
 using PasswordKeeper.Views;
 using System.IO;
+using System.Threading;
 
 namespace PasswordKeeper
 {
@@ -25,59 +26,28 @@ namespace PasswordKeeper
     public partial class MainWindow : Window
     {
         private MainWindowViewModel _mainWindowViewModel;
-
+        
         public MainWindow()
         {
+            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(Properties.Settings.Default.Language);
             InitializeComponent();
-
-            if (Database.Exists)
-            {
-                LoginToDatabase();
-            }
-            else
-            {
-                CreateNewDatabase();
-            }
-
-            DataContext = _mainWindowViewModel;
-        }
-
-        private void LoginToDatabase()
-        {
-            Database database = DatabaseSerializer.LoadData();
-            GetPasswordWindow getPasswordWindow = new GetPasswordWindow();
-            getPasswordWindow.ShowDialog();
-            if (!getPasswordWindow.Valid)
-            {
-                Close();
-                return;
-            }
             try
             {
-                database.CheckPassword(getPasswordWindow.Password);
-                _mainWindowViewModel = new MainWindowViewModel(this, database);
+                _mainWindowViewModel = new MainWindowViewModel(this);
+                DataContext = _mainWindowViewModel;
             }
             catch (UnauthorizedAccessException)
-            {                
-                MessageBox.Show("Wrong password");
-                Close();
-            }
-        }
-
-        private void CreateNewDatabase()
-        {
-            InitialPassAndKeywordWindow initWindow = new InitialPassAndKeywordWindow();
-            initWindow.ShowDialog();
-            if (!initWindow.initialPasswordViewModel.Valid)
             {
-                Close();
-                return;
+                MessageBox.Show("Wrong password!");
+                Close();                
             }
-            Database database = new Database(initWindow.initialPasswordViewModel.Keyword, initWindow.initialPasswordViewModel.Password);
-            _mainWindowViewModel = new MainWindowViewModel(this, database);
-            _mainWindowViewModel.SaveDataMethod();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                Close();
+            }           
         }
-
+        
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (_mainWindowViewModel == null)
@@ -100,6 +70,12 @@ namespace PasswordKeeper
         private void MenuItemClose_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void MenuItemLanguage_Click(object sender, RoutedEventArgs e)
+        {
+            ChooseLanguageWindow chooseLanguageWindow = new ChooseLanguageWindow(this);
+            chooseLanguageWindow.ShowDialog();
         }
     }
 }
