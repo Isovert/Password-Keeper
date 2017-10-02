@@ -1,0 +1,23 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:PasswordKeeper">
+
+    <!-- dictionary for ColorStyles -->
+    
+    <Color x:Key="BackgroundDark">#3e3e42</Color>
+    <SolidColorBrush x:Key="BackgroundDarkBrush" Color="{StaticResource BackgroundDark}" />
+
+    <Color x:Key="BackgroundVeryDark">#2d2d30</Color>
+    <SolidColorBrush x:Key="BackgroundVeryDarkBrush" Color="{StaticResource BackgroundVeryDark}" />
+
+    <Color x:Key="BackgroundHighlightedDark">#969696</Color>
+    <SolidColorBrush x:Key="BackgroundHighlightedBrush" Color="{StaticResource BackgroundHighlightedDark}" />
+
+    <Color x:Key="ForegroundLightGray">#f0eff1</Color>
+    <SolidColorBrush x:Key="ForegroundLightGrayBrush" Color="{StaticResource ForegroundLightGray}" />
+
+    <Color x:Key="ForegroundWhite">#FFFFFF</Color>
+    <SolidColorBrush x:Key="ForegroundWhiteBrush" Color="{StaticResource ForegroundWhite}" />
+    
+    <!-- f0eff1 -->
+</ResourceDictionary>
