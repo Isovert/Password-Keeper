@@ -3,27 +3,27 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace PasswordKeeper.Core
 {
-    public static class DatabaseSerializer
+    public static class VaultSerializer
     {
-        public static void SaveData(Database database)
+        public static void SaveData(Vault database)
         {
-            using (Stream stream = File.Open(Database.fileName, FileMode.Create))
+            using (Stream stream = File.Open(Vault.fileName, FileMode.Create))
             {
                 var binaryFormatter = new BinaryFormatter();
                 binaryFormatter.Serialize(stream, database);
             }
         }
 
-        public static Database LoadData()
+        public static Vault LoadData()
         {
             try
             {
-                using (Stream stream = File.Open(Database.fileName, FileMode.Open))
+                using (Stream stream = File.Open(Vault.fileName, FileMode.Open))
                 {
                     var binaryFormatter = new BinaryFormatter();
-                    Database database = (Database)binaryFormatter.Deserialize(stream);
+                    Vault database = (Vault)binaryFormatter.Deserialize(stream);
                     if (database == null)
-                        return new Database();
+                        return new Vault();
                     else
                         return database;
                 }

@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security;
 using System.Security.Cryptography;
 
 namespace PasswordKeeper.Core
 {
     [Serializable]
-    public sealed class Database
+    public sealed class Vault
     {
         public static readonly string fileName = "Vault.bin";
         private List<FolderModel> _rootFolderModels;
@@ -17,11 +18,12 @@ namespace PasswordKeeper.Core
             private set { _rootFolderModels = value; }
         }
         private byte[] _initializationVector;
-        private byte[] _encodedMagicWordByte;
-        private byte[] _magicWordByte;
+        private byte[] _encodedWordByte;
+        private byte[] _wordByte;
         
-        [NonSerialized] private static byte[] _key;
-        internal static byte[] Key
+        [NonSerialized]
+        private static SecureString _key;
+        internal static SecureString Key
         {
             get { return _key; }
         }
@@ -31,35 +33,51 @@ namespace PasswordKeeper.Core
             get { return File.Exists(fileName); }
         }
 
-        public Database()
+        public Vault()
         {
 
         }
 
-        public Database(string magicWord, string password)
+        /// <summary>
+        /// Constructor for first initialization of database
+        /// </summary>
+        /// <param name="magicWord"></param>
+        /// <param name="password"></param>
+        public Vault(SecureString password)
         {
+            //change that constructor add open and seal methods
+            //also vault should be responsible for getting password for specified login entry
             RootFolderModels = new List<FolderModel>();
+
+            //for testing purposes
+
+            RootFolderModels.Add(new FolderModel("A"));
+            RootFolderModels.Add(new FolderModel("B"));
+
+            //for testing purposes
+
+
             var random = RandomNumberGenerator.Create();
             _initializationVector = new byte[16];
             random.GetBytes(_initializationVector);
             byte[] salt = CreateSalt(32);
-            _magicWordByte = GenerateSaltedHash(ConvertToByte(magicWord), salt);
-            byte[] passwordByte = ConvertToByte32Array(password);
+            //Fix that
+            _wordByte = GenerateSaltedHash( ConvertToByte("Temporal") , salt);
             EncryptorAES AES = new EncryptorAES();
-            _encodedMagicWordByte = AES.EncryptStringToBytes(ConvertByteToString(_magicWordByte), passwordByte, _initializationVector);
+            _encodedWordByte = AES.EncryptStringToBytes(ConvertByteToString(_wordByte), password, _initializationVector);
         }
-
-        internal void CheckPassword(string password)
+        
+        internal void TryLogIn(SecureString password)
         {
             try
             {
-                byte[] passwordByte = ConvertToByte32Array(password);
+                byte[] passwordByte = ConvertToByte32Array(password.Unsecure());
                 EncryptorAES AES = new EncryptorAES();
-                string decodedMagicWord = AES.DecryptStringFromBytes(_encodedMagicWordByte, passwordByte, _initializationVector);
+                string decodedMagicWord = AES.DecryptStringFromBytes(_encodedWordByte, password, _initializationVector);
                 byte[] decodedMagicWordByte = ConvertToByte(decodedMagicWord);
-                if (Enumerable.SequenceEqual(decodedMagicWordByte, _magicWordByte))
+                if (Enumerable.SequenceEqual(decodedMagicWordByte, _wordByte))
                 {
-                    _key = passwordByte;
+                    _key = password;
                 }
                 //else
                 //{

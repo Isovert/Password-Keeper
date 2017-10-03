@@ -103,7 +103,10 @@ namespace PasswordKeeper.Core
 
         private void CloseAndProceed()
         {
-
+            ApplicationViewModel appViewModel = IoC.Get<ApplicationViewModel>();
+            appViewModel.CreateNewVault(_password);
+            appViewModel.GoToPage(ApplicationPage.MainPage);
+            appViewModel.SideMenuVisible = true;
         }
         #endregion
 

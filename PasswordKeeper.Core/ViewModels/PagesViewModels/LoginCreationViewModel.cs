@@ -5,13 +5,13 @@ namespace PasswordKeeper.Core
 {
     class LoginCreationViewModel : INotifyPropertyChanged
     {
-        public LoginCreationViewModel(LoginModel loginModel)
+        public LoginCreationViewModel(CredentialsModel loginModel)
         {
             _loginModel = loginModel;
             Save = new RelayCommand(x => SaveMethod(), x => DataIsValid() ? true : false);
         }
 
-        private LoginModel _loginModel;
+        private CredentialsModel _loginModel;
 
         #region RelayCommands
         public ICommand Save { get; private set; }

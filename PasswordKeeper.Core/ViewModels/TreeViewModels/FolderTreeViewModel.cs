@@ -14,7 +14,6 @@ namespace PasswordKeeper.Core
                 (from child in this._folderModel.Folders
                  select new FolderTreeViewModel(child, this))
                 .ToList());
-            
         }
 
         public FolderTreeViewModel(FolderModel folderModel, FolderTreeViewModel parent)
@@ -25,7 +24,6 @@ namespace PasswordKeeper.Core
                 (from child in _folderModel.Folders
                  select new FolderTreeViewModel(child, this))
                 .ToList());
-            
         }
 
         #endregion
@@ -44,7 +42,7 @@ namespace PasswordKeeper.Core
             set
             {
                 _folderViewModelsCollection = value;
-                OnPropertyChanged("FolderViewModelsCollection");
+                OnPropertyChanged(nameof(FolderViewModelsCollection));
             }
         }
 
@@ -78,30 +76,25 @@ namespace PasswordKeeper.Core
         #region Methods
         public void AddFolder(FolderModel folderModel)
         {
-            this._folderModel.Folders.Add(folderModel);
+            _folderModel.Folders.Add(folderModel);
             FolderTreeViewModel newFolderViewModel = new FolderTreeViewModel(folderModel, this);
             _folderViewModelsCollection.Add(newFolderViewModel);
         }
-
-        public void DeleteFolder()
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public void DeleteFolder(FolderTreeViewModel folderTreeViewModel)
         {
             _folderModel.Folders.Remove(folderTreeViewModel._folderModel);
             _folderViewModelsCollection.Remove(folderTreeViewModel);
         }
 
-        public void AddLogin(LoginModel loginModel)
+        public void AddLogin(CredentialsModel loginModel)
         {
             _folderModel.Logins.Add(loginModel);
             LoginTreeViewModel newLoginViewModel = new LoginTreeViewModel(loginModel, this);
             FolderViewModelsCollection.Add(newLoginViewModel);
         }
 
-        public void DeleteLogin(LoginModel loginModel, LoginTreeViewModel loginTreeViewModel)
+        public void DeleteLogin(CredentialsModel loginModel, LoginTreeViewModel loginTreeViewModel)
         {
             _folderModel.Logins.Remove(loginModel);
             _folderViewModelsCollection.Remove(loginTreeViewModel);

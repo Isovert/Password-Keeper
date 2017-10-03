@@ -15,6 +15,12 @@ namespace PasswordKeeper
                 case ApplicationPage.InitializationPage:
                     return new InitializationPage();
 
+                case ApplicationPage.LoginPage:
+                    return new LoginPage();
+
+                case ApplicationPage.MainPage:
+                    return new MainPage();
+
                 default:
                     Debugger.Break();
                     return null;

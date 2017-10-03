@@ -50,7 +50,7 @@
 
                                         <!-- Main title -->
                                         <Viewbox Grid.Column="1">
-                                            <TextBlock Text="Sign In"/>
+                                            <TextBlock Text="Password Keeper"/>
                                         </Viewbox>
 
                                         <!-- Window icons -->
@@ -88,10 +88,23 @@
             />
     </WindowChrome.WindowChrome>
 
-    <Border Background="AliceBlue">
+    <Border>
         <Grid>
 
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <local:SideMenuControl 
+                Width="300"
+                Visibility="{Binding ApplicationViewModel.SideMenuVisible, 
+                                     Source={x:Static local:ViewModelLocator.Instance},
+                                     Converter={local:BoolToVisibilityConverter}, ConverterParameter=True}"/>
+
             <Frame x:Name="MainFrame" 
+                   Grid.Column="1"
+                   NavigationUIVisibility="Hidden"
                    Content="{Binding ApplicationViewModel.CurrentPage, 
                                      Source={x:Static local:ViewModelLocator.Instance},
                                      Converter={local:ApplicationPageValueConverter}}"

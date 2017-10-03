@@ -1,23 +1,24 @@
 ﻿using System;
 using System.IO;
+using System.Security;
 using System.Security.Cryptography;
 
 namespace PasswordKeeper.Core
 {
     sealed class EncryptorAES
     {
-        public byte[] EncryptStringToBytes(string plainText, byte[] Key, byte[] IV)
+        public byte[] EncryptStringToBytes(string plainText, SecureString password, byte[] IV)
         {
-            if (plainText == null || plainText.Length <= 0)
+            if (plainText == null || plainText.Length == 0)
                 throw new ArgumentNullException("plainText");
-            if (Key == null || Key.Length <= 0)
-                throw new ArgumentNullException("Key");
-            if (IV == null || IV.Length <= 0)
+            if (password == null || password.Length == 0)
+                throw new ArgumentNullException("password");
+            if (IV == null || IV.Length == 0)
                 throw new ArgumentNullException("IV");
             byte[] encrypted;
             using (Aes aesAlg = Aes.Create())
             {
-                aesAlg.Key = Key;
+                aesAlg.Key = ConvertToByte32Array(password.Unsecure());
                 aesAlg.IV = IV;
                 ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
                 using (MemoryStream msEncrypt = new MemoryStream())
@@ -35,15 +36,17 @@ namespace PasswordKeeper.Core
             return encrypted;
         }
 
-        public string DecryptStringFromBytes(byte[] cipherText, byte[] Key, byte[] IV)
+        public string DecryptStringFromBytes(byte[] cipherText, SecureString password, byte[] IV)
         {
-            if (cipherText == null || cipherText.Length <= 0)
+            if (cipherText == null || cipherText.Length == 0)
                 throw new ArgumentNullException("cipherText");
-            if (Key == null || Key.Length <= 0)
-                throw new ArgumentNullException("Key");
-            if (IV == null || IV.Length <= 0)
+            if (password == null || password.Length == 0)
+                throw new ArgumentNullException("password");
+            if (IV == null || IV.Length == 0)
                 throw new ArgumentNullException("IV");
-            string plaintext = null;            
+
+            byte[] Key = ConvertToByte32Array(password.Unsecure());
+            string plainText = null;            
             using (Aes aesAlg = Aes.Create())
             {
                 aesAlg.Key = Key;
@@ -55,12 +58,22 @@ namespace PasswordKeeper.Core
                     {
                         using (StreamReader srDecrypt = new StreamReader(csDecrypt))
                         {
-                            plaintext = srDecrypt.ReadToEnd();
+                            plainText = srDecrypt.ReadToEnd();
                         }
                     }
                 }
             }
-            return plaintext;
+            return plainText;
+        }
+
+        private byte[] ConvertToByte32Array(string text)
+        {
+            byte[] byte32Array = new byte[32];
+            for (int i = 0; i < text.Length; i++)
+            {
+                byte32Array[i] = (byte)text[i];
+            }
+            return byte32Array;
         }
     }
 }

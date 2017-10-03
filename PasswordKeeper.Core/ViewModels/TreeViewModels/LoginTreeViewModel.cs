@@ -6,11 +6,11 @@ namespace PasswordKeeper.Core
 {
     public class LoginTreeViewModel : BaseTreeViewModel
     {
-        private LoginModel _loginModel;
+        private CredentialsModel _loginModel;
         private FolderTreeViewModel _parentFolderTreeViewModel;
         private bool unsavedChanges = false;
 
-        public LoginTreeViewModel(LoginModel loginModel, FolderTreeViewModel folderTreeViewModel)
+        public LoginTreeViewModel(CredentialsModel loginModel, FolderTreeViewModel folderTreeViewModel)
         {
             _loginModel = loginModel;
             _name = _loginModel.Name;

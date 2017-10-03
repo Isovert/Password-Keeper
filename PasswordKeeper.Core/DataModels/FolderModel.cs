@@ -13,8 +13,8 @@ namespace PasswordKeeper.Core
             get { return _folders; }
         }
 
-        readonly List<LoginModel> _logins;
-        public List<LoginModel> Logins
+        readonly List<CredentialsModel> _logins;
+        public List<CredentialsModel> Logins
         {
             get { return _logins; }
         }
@@ -31,7 +31,7 @@ namespace PasswordKeeper.Core
         {
             Name = name;
             _folders = new List<FolderModel>();
-            _logins = new List<LoginModel>();
+            _logins = new List<CredentialsModel>();
         }        
     }
 }

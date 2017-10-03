@@ -4,9 +4,9 @@ using System.Windows;
 namespace PasswordKeeper.Core
 {
     [Serializable]
-    public sealed class LoginModel
+    public sealed class CredentialsModel
     {
-        public LoginModel()
+        public CredentialsModel()
         {
             DateTime now = DateTime.Now;
             CreationDateTime = now;
@@ -64,7 +64,7 @@ namespace PasswordKeeper.Core
         private string GetPasswordString()
         {
             EncryptorAES encryptorAES = new EncryptorAES();
-            return encryptorAES.DecryptStringFromBytes(_passwordEncrypted, Database.Key, _initializationVector);
+            return encryptorAES.DecryptStringFromBytes(_passwordEncrypted, Vault.Key, _initializationVector);
         }
         
         public void CopyPasswordToClipboard()
@@ -77,7 +77,7 @@ namespace PasswordKeeper.Core
             EncryptorAES encryptorAES = new EncryptorAES();
             var random = System.Security.Cryptography.RandomNumberGenerator.Create();
             random.GetBytes(_initializationVector);
-            _passwordEncrypted = encryptorAES.EncryptStringToBytes(password, Database.Key, _initializationVector);
+            _passwordEncrypted = encryptorAES.EncryptStringToBytes(password, Vault.Key, _initializationVector);
         }
         
 
